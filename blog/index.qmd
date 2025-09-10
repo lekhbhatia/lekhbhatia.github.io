@@ -1,5 +1,5 @@
 ---
-title: "My Math Rants"
+title: "Useful (?) Ramblings"
 listing:
   contents: posts
   fields: [date, title]
