@@ -11,7 +11,7 @@
     "href": "blog/index.html",
     "title": "My Math Rants",
     "section": "",
-    "text": "The Case for Inkscape\n\n\n\n\n\nAug 28, 2025\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\n\nTitle\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nThe Case for Inkscape\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/posts/inkscapelove/index.html",
@@ -19,19 +19,5 @@
     "title": "The Case for Inkscape",
     "section": "",
     "text": "In writing my honors thesis, and some other writing, I found that creating images was a relatively difficult process, especially if I wished for these images to be “to scale” in the mathematical sense. Of course, I could learn TikZ and I’m sure there exist packages for my use case. However, it happened to be that given the time constraints of my life, the learning curves associated to TikZ were something to be avoided. I was looking for a open source editor which I could get up and running quickly, and was compatible with my Overleaf/Github workflow.\nAs it turned out, the final answer to my problem was provided to me by a blog post by Gilles Castel. It will be immediately clear in this blog post that Inkscape is undeniably a top tier editor for these purposes. Features include, non-exhaustively:\n\nLaTeX text, in many formats. There are two ways to directly add text to your documents described in this stack exchange post. PDFLaTeX does not have easy support for customisable preambles, but TeX-Text does which I have linked to be the same preamble as my thesis (I warn that TeX-Text happens to be quite buggy, I am running on Ubuntu 22.04.5 LTS). In Castel’s blog post he discusses another method of adding text which retains text as a text object for your LaTeX editor to continue to change even after importing the “image”.\nParametric curves, via the inbuilt render –&gt; parametric curves extension. There are some small issues with asymptotic curves, but these issues can be remedied by some intelligent selection of parameters.\nEasy “blob” creation, due to a rich object/path/node editing system.\nAccurate transformations. I can scale, rotate, shear, translate all objects together or individually by precise numerical amounts which I specify. In fact, there is support for matrix transformations as well.\nEasy snapping. I can specify which aspects of my objects I wish to be snapping, which is a surprisingly useful feature missing from most other editors.\n\nTutorials can be found thanks to Elisa de Castro Guerra and others at this site. The skills are easy to pick up. Myself and other students in my honors cohort were able to create usable images pretty much as soon as we had the editor installed. Here are some images I drew up in less than 5 minutes each.\n\n  \n\nHere is a short list of (free) editors I tried which didn’t make the cut, and why. Perhaps you don’t have to go through the process of trying these if you read this.\n\nMicrosoft Whiteboard, RNote, MathCha – missing many key features.\nDesmos, Geogebra – where Desmos shines in usability, it lacks in serious geometric constructions, and where Geogebra shines in the latter, it truly fails at the former."
-  },
-  {
-    "objectID": "blog/posts/ibplove/index.html",
-    "href": "blog/posts/ibplove/index.html",
-    "title": "Why I Love Integration by Parts",
-    "section": "",
-    "text": "Analysis is a vast field, and there is a great deal I can say about why I find it beautiful1. However, a common adage conveys the beauty quite concisely: analysis is not about objects, it is about actions. The subjects of interest are not all-encompassing theorems about the macroscopic structure of the field, but rather the usage of ingenious tools to analyze a class of objects. I can find countless examples in harmonic, functional, stochastic, geometric, or microlocal analysis.\nIntegration by parts is one such ingenious tool which most students will learn in high school, and yet it evades the interest of most undergraduate mathematics students. In this article I will hopefully convince you that it should be of great interest. I love it, and you should too. I break apart this discussion broadly into two focuses: practice and theory."
-  },
-  {
-    "objectID": "blog/posts/ibplove/index.html#footnotes",
-    "href": "blog/posts/ibplove/index.html#footnotes",
-    "title": "Why I Love Integration by Parts",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nI owe a great deal of this understanding to Pierre Portal, Po Lam Yung and Andrew Hassell.↩︎"
   }
 ]
