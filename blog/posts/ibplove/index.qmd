@@ -1,0 +1,23 @@
+---
+title: "Why I Love Integration by Parts"
+date: "10/05/2025"
+draft: true
+---
+
+Analysis is a vast field, and there is a great deal I can say about why I find it beautiful[^1]. However, a common adage conveys the beauty quite concisely: analysis is not about objects, it is about actions. The subjects of interest are not all-encompassing theorems about the macroscopic structure of the field, but rather the usage of ingenious tools to analyze a class of objects. I can find countless examples in harmonic, functional, stochastic, geometric, or microlocal analysis.
+
+Integration by parts is one such ingenious tool which most students will learn in high school, and yet it evades the interest of most undergraduate mathematics students. In this article I will hopefully convince you that it should be of great interest. I love it, and you should too. I break apart this discussion broadly into two focuses: practice and theory.
+
+### Practice
+
+Let us say that I have some function $f \in C^\infty_c(\mathbb{R})$ which is smooth and compactly supported. Of course, some of these arguments can be modified for a weaker class of $f$, but I don't want to get into the weeds here. Simply speaking, all I require from $f$ is that it is integrable and that
+
+$$
+\frac{\mathrm d^n f}{\mathrm d x^n} < \infty
+$$
+
+for all $n \in \mathbb N$ up to some sufficiently high amount of regularity. If $f$ is smooth, this is indeed all $n$. We will try to prove a version of the [Riemann–Lebesgue lL;Lemma](https://en.wikipedia.org/wiki/Riemann%E2%80%93Lebesgue_lemma) for this $f$.
+
+[^1]: I owe a great deal of this understanding to [Pierre Portal](https://sites.google.com/view/pierre-portal/home), [Po Lam Yung](https://maths-people.anu.edu.au/~plyung/) and [Andrew Hassell](https://maths-people.anu.edu.au/~hassell/).
+
+

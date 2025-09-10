@@ -1,0 +1,31 @@
+---
+title: "The Case for Inkscape"
+date: "08/28/2025"
+---
+
+In writing my honors thesis, and some other writing, I found that creating images was a relatively difficult process, especially if I wished for these images to be “to scale” in the mathematical sense. Of course, I could learn TikZ and I’m sure there exist packages for my use case. However, it happened to be that given the time constraints of my life, the learning curves associated to TikZ were something to be avoided. I was looking for a open source editor which I could get up and running quickly, and was compatible with my Overleaf/Github workflow.
+
+As it turned out, the final answer to my problem was provided to me by a blog post by Gilles Castel. It will be immediately clear in this blog post that Inkscape is undeniably a top tier editor for these purposes. Features include, non-exhaustively:
+
+-   LaTeX text, in many formats. There are two ways to directly add text to your documents described in [this stack exchange post](https://tex.stackexchange.com/questions/61274/is-there-any-way-to-type-latex-code-directly-into-the-text-boxes-inkscape). PDFLaTeX does not have easy support for customisable preambles, but TeX-Text does which I have linked to be the same preamble as my thesis (I warn that TeX-Text happens to be quite buggy, I am running on Ubuntu 22.04.5 LTS). In Castel’s blog post he discusses another method of adding text which retains text as a text object for your LaTeX editor to continue to change even after importing the “image”.
+
+-   Parametric curves, via the inbuilt render –\> parametric curves extension. There are some small issues with asymptotic curves, but these issues can be remedied by some intelligent selection of parameters.
+
+-   Easy “blob” creation, due to a rich object/path/node editing system.
+
+-   Accurate transformations. I can scale, rotate, shear, translate all objects together or individually by precise numerical amounts which I specify. In fact, there is support for matrix transformations as well.
+
+-   Easy snapping. I can specify which aspects of my objects I wish to be snapping, which is a surprisingly useful feature missing from most other editors.
+
+Tutorials can be found thanks to Elisa de Castro Guerra and others at [this site](https://inkscape-manuals.readthedocs.io/en/latest/index.html). The skills are easy to pick up. Myself and other students in my honors cohort were able to create usable images pretty much as soon as we had the editor installed. Here are some images I drew up in less than 5 minutes each.
+
+::: {.center}
+![](csf.webp){width="50%"} ![](reaperkills.webp){width="30%"} ![](reflectedexample.webp){width="80%"}
+:::
+
+
+Here is a short list of (free) editors I tried which didn’t make the cut, and why. Perhaps you don’t have to go through the process of trying these if you read this.
+
+- Microsoft Whiteboard, RNote, MathCha – missing many key features.
+
+- Desmos, Geogebra – where Desmos shines in usability, it lacks in serious geometric constructions, and where Geogebra shines in the latter, it truly fails at the former.
