@@ -1,14 +1,21 @@
 ---
 title: "Why I Love Integration by Parts"
 date: "10/05/2025"
-draft: true
 ---
 
-Analysis is a vast field, and there is a great deal I can say about why I find it beautiful[^1]. However, a common adage conveys the beauty quite concisely: analysis is not about objects, it is about actions. The subjects of interest are not all-encompassing theorems about the macroscopic structure of the field, but rather the usage of ingenious tools to analyze a class of objects. I can find countless examples in harmonic, functional, stochastic, geometric, or microlocal analysis.
+Analysis is a vast field, and there is a great deal I can say about why I find it beautiful. However, a common adage conveys the beauty quite concisely: analysis is not about objects, it is about actions. The subjects of interest are not all-encompassing theorems about the macroscopic structure of the field, but rather the usage of ingenious tools to analyze a class of objects. I can find countless examples in harmonic, functional, stochastic, geometric, or microlocal analysis.
 
-[^1]: I owe a great deal of this understanding to [Pierre Portal](https://sites.google.com/view/pierre-portal/home), [Po Lam Yung](https://maths-people.anu.edu.au/~plyung/) and [Andrew Hassell](https://maths-people.anu.edu.au/~hassell/).
+Integration by parts (IBP) is one such ingenious tool which most students will learn in high school, and yet it evades the interest of most undergraduate mathematics students. In this article I will hopefully convince you that it should be of great interest. I love it, and you should too. I break apart this discussion broadly into two focuses: practice and theory.
 
-Integration by parts is one such ingenious tool which most students will learn in high school, and yet it evades the interest of most undergraduate mathematics students. In this article I will hopefully convince you that it should be of great interest. I love it, and you should too. I break apart this discussion broadly into two focuses: practice and theory.
+### Statement
+
+In high school we learn that for $f,g\in C^1(\mathbb R)$
+$$
+\int f'g \mathrm d x = fg - \int g'f \mathrm d x
+$$
+which can be derived with nothing more than the product rule and an application of the fundamental theorem of calculus[^1]. To be a little pedantic, neither of these integrals is necessarily well defined. For a proper treatment of integration by parts, we would have to further impose something like $f,f'\in L^p(\mathbb R)$ and $g,g' \in L^q(\mathbb R)$ such that $\frac{1}{p} + \frac{1}{q} = 1$. We can make some standard adjustments to consider $\mathbb R^n$ instead of $\mathbb R$. In fact, it would not be difficult to write down some equivalent statement of integration by parts over an arbitrary manifold, but we will leave this discussion to [this blog post](https://arbourj.wordpress.com/2013/12/19/integration-by-parts-and-greens-formula-on-riemannian-manifolds/).
+
+[^1]: I have oft heard the argument that since it is easy to derive via other seemingly more "elementary" or "foundational" results, that IBP certainly shouldn't be of much interest in and of itself. I find that this sort of thinking is antithetical to the pursuit of research in analysis. It is often the case that very simple methods are quite difficult to come by, and can go a very long way. It is with the presentation of IBP as a method in and of itself that we have made so much progress using it. To beat an analogy to death, I think this is because mathematics is very much an art form. You can claim that some methods are easy, but there is much credit to be given to those who tried to experiment with the simplest things.
 
 ### Practice
 
@@ -18,7 +25,7 @@ $$
 \frac{\mathrm d^n f}{\mathrm d x^n} < \infty
 $$
 
-for all $n \in \mathbb N$ up to some sufficiently high amount of regularity. If $f$ is smooth, this is indeed all $n$. We will try to prove a version of the [Riemann–Lebesgue Lemma](https://en.wikipedia.org/wiki/Riemann%E2%80%93Lebesgue_lemma) for this $f$. We will prove that the Fourier transform vanishes at infinity. Consider the Fourier transform of $f$ using the convention provided in [Hintz's notes](https://link.springer.com/book/9783031907050). 
+for all $n \in \mathbb N$ up to some sufficiently high amount of regularity. If $f$ is smooth, this is indeed all $n$. We will try to prove a version of the [Riemann–Lebesgue Lemma](https://en.wikipedia.org/wiki/Riemann%E2%80%93Lebesgue_lemma) for this $f$; that the Fourier transform vanishes at infinity. Consider the Fourier transform of $f$ using the convention provided in [Hintz's notes](https://link.springer.com/book/9783031907050). 
 $$
 \widehat f(\xi) = \int_{-\infty}^\infty e^{-ix\xi} f(x) \mathrm d x
 $$
@@ -26,7 +33,7 @@ Note that
 $$
 \frac{\mathrm d}{\mathrm d x}(e^{-ix\xi}) = -i\xi e^{-ix\xi}.
 $$
-This self referential derivative is key. It will allow us to now use integration by parts on the Fourier transform.
+This self referential derivative is key. It will allow us to now use IBP on the Fourier transform.
 $$
 \widehat f(\xi) = \int_{-\infty}^\infty e^{-ix\xi} f(x) \mathrm d x = \left. \left(\frac{e^{-ix\xi}}{-i\xi} f(x)\right)\right|_{-\infty}^\infty-\int_{-\infty}^\infty \frac{e^{-ix\xi}}{-i\xi} f'(x) \mathrm d x
 $$
@@ -38,7 +45,7 @@ If $f$ is at least $C^1$ then we can use $|e^{-ix\xi}| \leq 1$ to get the simple
 $$
 |\widehat f(\xi)| \leq \frac{\lVert f'\rVert_{L^1(\mathbb R)}}{|\xi|}
 $$
-and indeed that as $|\xi| \to \infty$ the Fourier transform must vanish. If we are fortunate enough that $f$ is $C^2$ or twice differentiable, we can do another integration by parts and show that
+and indeed that as $|\xi| \to \infty$ the Fourier transform must vanish. If we are fortunate enough that $f$ is $C^2$ or twice differentiable, we can do another IBP and show that
 $$
 |\widehat f(\xi)| \leq \frac{\lVert f^{(2)}\rVert_{L^1(\mathbb R)}}{|\xi|^2}
 $$
@@ -46,14 +53,74 @@ and the decay is just a little bit stronger. The punchline here is that if $f$ h
 $$
 |\widehat f(\xi)| \leq \frac{\lVert f^{(N)}\rVert_{L^1(\mathbb R)}}{|\xi|^N}.
 $$
-Indeed, we can prove a version of the Riemann-Lebesgue Lemma with this method, but also prove that the Fourier transform of any smooth function which vanishes at $\pm\infty$ must be **rapidly decaying**. **What is really going on?** Effectively, the Fourier transform is the integral of a highly oscillatory function against a slowly oscillating, or non-oscillating function. Imagine you take the integral of $\sin (\omega x)$ for $\omega \in \mathbb R$ against some function which is very close to 1 on the unit interval, and smoothly decays to 0. For large enough $\omega$ to induce heavy oscillations in $\sin$ we should see that the positive area contributions and negative area contributions will mostly cancel with each other in a symmetric-ish way. With this picture in mind, the result is not surprising at all.
+Indeed, we can prove a version of the Riemann-Lebesgue Lemma with this method, but also prove that the Fourier transform of any smooth function which vanishes at $\pm\infty$ must be rapidly decaying.
 
-**How does integration by parts fit in?** In some sense, integration by parts is providing you with a way to transfer regularity. As long as you have a sufficiently well behaved function, you can throw derivatives from your highly oscillatory term onto this well behaved function with little consequences. In the process you will recover decay factors which help you prove neat results. When I first saw this technique, I thought it was magic. I have now seen it being applied tens of times in assignments, lectures, and papers. It feels no less like magic.
+**What is really going on?** Effectively, the Fourier transform is the integral of a highly oscillatory function against a slowly oscillating, or non-oscillating function. Imagine you take the integral of $\sin (\omega x)$ for $\omega \in \mathbb R$ against some function which is very close to 1 on the unit interval, and smoothly decays to 0. For large enough $\omega$ to induce heavy oscillations in $\sin$ we should see that the positive area contributions and negative area contributions will mostly cancel with each other in a symmetric-ish way. With this picture in mind, the result is not surprising at all.
+
+**How does IBP fit in?** In some sense, IBP is providing you with a way to transfer regularity. As long as you have a sufficiently well behaved function, you can throw derivatives from your highly oscillatory term onto this well behaved function with little consequences. In the process you will recover decay factors which help you prove neat results. When I first saw this technique, I thought it was magic. I have now seen it being applied tens of times in assignments, lectures, and papers. It feels no less like magic.
 
 ### Theory
 
-There are broadly two situations in which I have encountered integration by parts which pointed out to me that it is not just a tool, but a fundamental property of the universe in its own right. Of course, these are influenced by my mathematical education: studying PDE, and studying differential geometry. The differently experienced analyst might notice other neat results (or maybe an algebraist, I don't know).
+There are probably many aspects of mathematical theory building which I could argue arise from IBP. However, I would be lying if I did not admit that most of these are in fact simply some kind of [Leibniz rule](https://ncatlab.org/nlab/show/derivation) (rare instance of reasonable nLab post). However, I do believe there is one theory building aspect where it is uniquely the "integrative" nature of IBP which helps us out.
 
-#### "Weak" Stuff
+This is the notion of "weak"-ness in the world of PDE. Let us consider the function
+$$
+f(x) = \begin{cases}
+0 & x< 0\\
+x & x\geq 0
+\end{cases}.
+$$
 
-#### All the Laws
+In a vague sense, this function is differentiable with derivative given by
+$$
+v(x) = \begin{cases}
+0 & x<0\\
+1 & x\geq 0
+\end{cases}
+$$
+
+with the obvious caveat of non-differentiability at just a single point. While this is an imprecise statement, we as humans understand what we mean by writing something like this down. We effectively want to ignore the behaviour which is only captured on irrelevant sets (sets of measure zero). Integration by parts provides the natural idea. If we suspend disbelief for one second and assume that $f\in C^1(\mathbb R)$, then it must be by IBP that for any $\phi\in C^\infty_c(\mathbb R)$
+
+$$
+\int f \phi' = -\int f' \phi
+$$
+
+where $f'$ is what we mean by the usual derivative of $f$ which is entirely well defined. In our example, $f'$ simply does not exist, but we do have a function $v$ such that for all $\phi\in C^\infty_c(\mathbb R)$
+
+$$
+\int f \phi' = -\int v \phi.
+$$
+
+We say that if $v$ satisfies this property for some possibly very irregular $f$, then it is the weak derivative of $f$. We use integration by parts to create a natural notion of a weak derivative. Formally, we can view the weak derivative in a distributional sense. We define the functional $v$ as the map from $C^\infty_c(\mathbb R) \to \R$ which maps
+
+$$
+\phi \mapsto -\int f \phi'.
+$$
+
+$v$ is the weak derivative of $f$ and it can act on smooth functions with this integration. The easiest example of this is the Dirac-Delta function. Let $f$ be the indicator function on the positive reals. We define the Dirac-Delta function $\delta$ to be its weak derivative. This is not a function in any traditional sense, but it has the expected behaviour via the integral:
+
+$$
+\phi \mapsto -\int_0^\infty \phi' = \left. (-\phi)\right|_0^\infty = \phi(0)
+$$
+
+where we have just used the fundamental theorem of calculus. We are somehow able to capture the behaviour of what it means for $f$ to jump up rapidly at the origin, in a completely formal setting. Of course, if the natural derivative of $f$ exists already, we know that $v$ will directly coincide with $f'$ as well.
+
+**What else can we do?** We can also consider a notion of a weak solution to a PDE. I would say that a function $f\in C^2(\mathbb R)$ is a solution to Laplace's equation if
+
+$$
+\frac{\mathrm d^2 f}{\mathrm d x^2} = 0.
+$$
+
+What if $f$ is not $C^2$, but only $C^1$? Then we can weaken our notion of a solution slightly. We say that $f$ is a weak solution to Laplace's equation if for all $\phi \in C^\infty_c(\mathbb R)$
+
+$$
+\int \frac{\mathrm d f}{\mathrm d x} \phi' = 0
+$$
+
+which only requires first derivatives. Maybe we don't even have that. We can do IBP once more and move the final derivative onto $\phi$ and say that a weak solution is one such that for all $\phi \in C^\infty_c(\mathbb R)$
+
+$$
+\int f \phi'' = 0.
+$$
+
+This means that for any given PDE problem, there are multiple notions of a weak solution, most of which are inspired from integration by parts. It is a vital skill in solving PDEs to select the appropriate level of "weakness" of your solutions. However, I can certainly leave the more nuanced discussion of these ideas to [Evans](https://www.amazon.com.au/Partial-Differential-Equations-Lawrence-Evans/dp/0821849743) or [Taylor](https://link.springer.com/book/10.1007/978-1-4419-7055-8). 

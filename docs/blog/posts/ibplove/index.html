@@ -143,7 +143,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#practice" id="toc-practice" class="nav-link active" data-scroll-target="#practice">Practice</a></li>
+  <li><a href="#statement" id="toc-statement" class="nav-link active" data-scroll-target="#statement">Statement</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
   <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory</a></li>
   </ul>
 </nav>
@@ -176,8 +177,14 @@ window.Quarto = {
 </header>
 
 
-<p>Analysis is a vast field, and there is a great deal I can say about why I find it beautiful<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. However, a common adage conveys the beauty quite concisely: analysis is not about objects, it is about actions. The subjects of interest are not all-encompassing theorems about the macroscopic structure of the field, but rather the usage of ingenious tools to analyze a class of objects. I can find countless examples in harmonic, functional, stochastic, geometric, or microlocal analysis.</p>
-<p>Integration by parts is one such ingenious tool which most students will learn in high school, and yet it evades the interest of most undergraduate mathematics students. In this article I will hopefully convince you that it should be of great interest. I love it, and you should too. I break apart this discussion broadly into two focuses: practice and theory.</p>
+<p>Analysis is a vast field, and there is a great deal I can say about why I find it beautiful. However, a common adage conveys the beauty quite concisely: analysis is not about objects, it is about actions. The subjects of interest are not all-encompassing theorems about the macroscopic structure of the field, but rather the usage of ingenious tools to analyze a class of objects. I can find countless examples in harmonic, functional, stochastic, geometric, or microlocal analysis.</p>
+<p>Integration by parts (IBP) is one such ingenious tool which most students will learn in high school, and yet it evades the interest of most undergraduate mathematics students. In this article I will hopefully convince you that it should be of great interest. I love it, and you should too. I break apart this discussion broadly into two focuses: practice and theory.</p>
+<section id="statement" class="level3">
+<h3 class="anchored" data-anchor-id="statement">Statement</h3>
+<p>In high school we learn that for <span class="math inline">\(f,g\in C^1(\mathbb R)\)</span> <span class="math display">\[
+\int f'g \mathrm d x = fg - \int g'f \mathrm d x
+\]</span> which can be derived with nothing more than the product rule and an application of the fundamental theorem of calculus<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To be a little pedantic, neither of these integrals is necessarily well defined. For a proper treatment of integration by parts, we would have to further impose something like <span class="math inline">\(f,f'\in L^p(\mathbb R)\)</span> and <span class="math inline">\(g,g' \in L^q(\R)\)</span> such that <span class="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>. We can make some standard adjustments to consider <span class="math inline">\(\mathbb R^n\)</span> instead of <span class="math inline">\(\mathbb R\)</span>. In fact, it would not be difficult to write down some equivalent statement of integration by parts over an arbitrary manifold, but we will leave this discussion to <a href="https://arbourj.wordpress.com/2013/12/19/integration-by-parts-and-greens-formula-on-riemannian-manifolds/">this blog post</a>.</p>
+</section>
 <section id="practice" class="level3">
 <h3 class="anchored" data-anchor-id="practice">Practice</h3>
 <p>Let us say that I have some function <span class="math inline">\(f \in C^\infty_c(\mathbb{R})\)</span> which is smooth and compactly supported. Of course, some of these arguments can be modified for a weaker class of <span class="math inline">\(f\)</span>, but I don’t want to get into the weeds here. Simply speaking, all I require from <span class="math inline">\(f\)</span> is that it is integrable and that</p>
@@ -188,37 +195,33 @@ window.Quarto = {
 \widehat f(\xi) = \int_{-\infty}^\infty e^{-ix\xi} f(x) \mathrm d x
 \]</span> Note that <span class="math display">\[
 \frac{\mathrm d}{\mathrm d x}(e^{-ix\xi}) = -i\xi e^{-ix\xi}.
-\]</span> This self referential derivative is key. It will allow us to now use integration by parts on the Fourier transform. <span class="math display">\[
+\]</span> This self referential derivative is key. It will allow us to now use IBP on the Fourier transform. <span class="math display">\[
 \widehat f(\xi) = \int_{-\infty}^\infty e^{-ix\xi} f(x) \mathrm d x = \left. \left(\frac{e^{-ix\xi}}{-i\xi} f(x)\right)\right|_{-\infty}^\infty-\int_{-\infty}^\infty \frac{e^{-ix\xi}}{-i\xi} f'(x) \mathrm d x
 \]</span> By the fact that <span class="math inline">\(f\)</span> is compactly supported, we expect that the first term in the final expression should vanish. In particular <span class="math display">\[
 \widehat f(\xi) = \frac{1}{i\xi}\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x.
 \]</span> If <span class="math inline">\(f\)</span> is at least <span class="math inline">\(C^1\)</span> then we can use <span class="math inline">\(|e^{-ix\xi}| \leq 1\)</span> to get the simple estimate that <span class="math display">\[
-|\widehat f(\xi)| \leq \frac{\lVert f'\rVert_{L^1(\R)}}{|\xi|}
-\]</span> and indeed that as <span class="math inline">\(|\xi| \to \infty\)</span> the Fourier transform must vanish. If we are fortunate enough that <span class="math inline">\(f\)</span> is <span class="math inline">\(C^2\)</span> or twice differentiable, we can do another integration by parts and show that <span class="math display">\[
-|\widehat f(\xi)| \leq \frac{\lVert f^{(2)}\rVert_{L^1(\R)}}{|\xi|^2}
+|\widehat f(\xi)| \leq \frac{\lVert f'\rVert_{L^1(\mathbb R)}}{|\xi|}
+\]</span> and indeed that as <span class="math inline">\(|\xi| \to \infty\)</span> the Fourier transform must vanish. If we are fortunate enough that <span class="math inline">\(f\)</span> is <span class="math inline">\(C^2\)</span> or twice differentiable, we can do another IBP and show that <span class="math display">\[
+|\widehat f(\xi)| \leq \frac{\lVert f^{(2)}\rVert_{L^1(\mathbb R)}}{|\xi|^2}
 \]</span> and the decay is just a little bit stronger. The punchline here is that if <span class="math inline">\(f\)</span> happens to be smooth, or infinitely differentiable, then we can show that for any <span class="math inline">\(N\)</span> <span class="math display">\[
-|\widehat f(\xi)| \leq \frac{\lVert f^{(N)}\rVert_{L^1(\R)}}{|\xi|^N}.
-\]</span> Indeed, we can prove a version of the Riemann-Lebesgue Lemma with this method, but also prove that the Fourier transform of any smooth function which vanishes at <span class="math inline">\(\pm\infty\)</span> must be <strong>rapidly decaying</strong>. <strong>What is really going on?</strong> Effectively, the Fourier transform is the integral of a highly oscillatory function against a slowly oscillating, or non-oscillating function. Imagine you take the integral of <span class="math inline">\(\sin (\omega x)\)</span> for <span class="math inline">\(\omega \in \mathbb R\)</span> against some function which is very close to 1 on the unit interval, and smoothly decays to 0. For large enough <span class="math inline">\(\omega\)</span> to induce heavy oscillations in <span class="math inline">\(\sin\)</span> we should see that the positive area contributions and negative area contributions will mostly cancel with each other in a symmetric-ish way. With this picture in mind, the result is not surprising at all.</p>
-<p><strong>How does integration by parts fit in?</strong> In some sense, integration by parts is providing you with a way to transfer regularity. As long as you have a sufficiently well behaved function, you can throw derivatives from your highly oscillatory term onto this well behaved function with little consequences. In the process you will recover decay factors which help you prove neat results. When I first saw this technique, I thought it was magic. I have now seen it being applied tens of times in assignments, lectures, and papers. It feels no less like magic.</p>
+|\widehat f(\xi)| \leq \frac{\lVert f^{(N)}\rVert_{L^1(\mathbb R)}}{|\xi|^N}.
+\]</span> Indeed, we can prove a version of the Riemann-Lebesgue Lemma with this method, but also prove that the Fourier transform of any smooth function which vanishes at <span class="math inline">\(\pm\infty\)</span> must be rapidly decaying.</p>
+<p><strong>What is really going on?</strong> Effectively, the Fourier transform is the integral of a highly oscillatory function against a slowly oscillating, or non-oscillating function. Imagine you take the integral of <span class="math inline">\(\sin (\omega x)\)</span> for <span class="math inline">\(\omega \in \mathbb R\)</span> against some function which is very close to 1 on the unit interval, and smoothly decays to 0. For large enough <span class="math inline">\(\omega\)</span> to induce heavy oscillations in <span class="math inline">\(\sin\)</span> we should see that the positive area contributions and negative area contributions will mostly cancel with each other in a symmetric-ish way. With this picture in mind, the result is not surprising at all.</p>
+<p><strong>How does IBP fit in?</strong> In some sense, IBP is providing you with a way to transfer regularity. As long as you have a sufficiently well behaved function, you can throw derivatives from your highly oscillatory term onto this well behaved function with little consequences. In the process you will recover decay factors which help you prove neat results. When I first saw this technique, I thought it was magic. I have now seen it being applied tens of times in assignments, lectures, and papers. It feels no less like magic.</p>
 </section>
 <section id="theory" class="level3">
 <h3 class="anchored" data-anchor-id="theory">Theory</h3>
-<p>There are broadly two situations in which I have encountered integration by parts which pointed out to me that it is not just a tool, but a fundamental property of the universe in its own right. Of course, these are influenced by my mathematical education: studying PDE, and studying differential geometry. The differently experienced analyst might notice other neat results (or maybe an algebraist, I don’t know).</p>
-<section id="weak-stuff" class="level4">
-<h4 class="anchored" data-anchor-id="weak-stuff">“Weak” Stuff</h4>
-</section>
-<section id="all-the-laws" class="level4">
-<h4 class="anchored" data-anchor-id="all-the-laws">All the Laws</h4>
+<p>There are probably many aspects of mathematical theory building which I could argue arise from IBP. However, I would be lying if I did not admit that most of these are in fact simply some kind of <a href="https://ncatlab.org/nlab/show/derivation">Leibniz rule</a> (rare instance of reasonable nLab post). However, I do believe there is one theory building aspect where it is uniquely the “integrative” nature of IBP which helps us out.</p>
+<p>This is the notion of “weak”-ness in the world of PDE. Let us consider the function</p>
 
 
-</section>
 </section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>I owe a great deal of this understanding to <a href="https://sites.google.com/view/pierre-portal/home">Pierre Portal</a>, <a href="https://maths-people.anu.edu.au/~plyung/">Po Lam Yung</a> and <a href="https://maths-people.anu.edu.au/~hassell/">Andrew Hassell</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>I have oft heard the argument that since it is easy to derive via other seemingly more “elementary” or “foundational” results, that IBP certainly shouldn’t be of much interest in and of itself. I find that this sort of thinking is antithetical to the pursuit of research in analysis. It is often the case that very simple methods are quite difficult to come by, and can go a very long way. It is with the presentation of IBP as a method in and of itself that we have made so much progress using it. To beat an analogy to death, I think this is because mathematics is very much an art form. You can claim that some methods are easy, but there is much credit to be given to those who tried to experiment with the simplest things.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
