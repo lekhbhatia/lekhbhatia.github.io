@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-82198019701ed23689b94b19be53ea0d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -182,7 +182,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="statement">Statement</h3>
 <p>In high school we learn that for <span class="math inline">\(f,g\in C^1(\mathbb R)\)</span> <span class="math display">\[
 \int f'g \mathrm d x = fg - \int g'f \mathrm d x
-\]</span> which can be derived with nothing more than the product rule and an application of the fundamental theorem of calculus<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To be a little pedantic, neither of these integrals is necessarily well defined. For a proper treatment of integration by parts, we would have to further impose something like <span class="math inline">\(f,f'\in L^p(\mathbb R)\)</span> and <span class="math inline">\(g,g' \in L^q(\mathbb R)\)</span> such that <span class="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>. We can make some standard adjustments to consider <span class="math inline">\(\mathbb R^n\)</span> instead of <span class="math inline">\(\mathbb R\)</span>. In fact, it would not be difficult to write down some equivalent statement of integration by parts over an arbitrary manifold, but we will leave this discussion to <a href="https://arbourj.wordpress.com/2013/12/19/integration-by-parts-and-greens-formula-on-riemannian-manifolds/">this blog post</a>.</p>
+\]</span> which can be derived with nothing more than the product rule and an application of the fundamental theorem of calculus<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To be a little pedantic, neither of these integrals is necessarily well defined. For a proper treatment of integration by parts, we would have to further impose something like <span class="math inline">\(f,f'\in L^p(\mathbb R)\)</span> and <span class="math inline">\(g,g' \in L^q(\mathbb R)\)</span> such that <span class="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>. However, you can simply ignore these conditions if you don’t know what those spaces are. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 </section>
 <section id="practice" class="level3">
 <h3 class="anchored" data-anchor-id="practice">Practice</h3>
@@ -198,9 +198,9 @@ window.Quarto = {
 \widehat f(\xi) = \int_{-\infty}^\infty e^{-ix\xi} f(x) \mathrm d x = \left. \left(\frac{e^{-ix\xi}}{-i\xi} f(x)\right)\right|_{-\infty}^\infty-\int_{-\infty}^\infty \frac{e^{-ix\xi}}{-i\xi} f'(x) \mathrm d x
 \]</span> By the fact that <span class="math inline">\(f\)</span> is compactly supported, we expect that the first term in the final expression should vanish. In particular <span class="math display">\[
 \widehat f(\xi) = \frac{1}{i\xi}\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x.
-\]</span> If <span class="math inline">\(f\)</span> is at least <span class="math inline">\(C^1\)</span> then we can use <span class="math inline">\(|e^{-ix\xi}| \leq 1\)</span> to get the simple estimate that <span class="math display">\[
-|\widehat f(\xi)| \leq \frac{\lVert f'\rVert_{L^1(\mathbb R)}}{|\xi|}
-\]</span> and indeed that as <span class="math inline">\(|\xi| \to \infty\)</span> the Fourier transform must vanish. If we are fortunate enough that <span class="math inline">\(f\)</span> is <span class="math inline">\(C^2\)</span> or twice differentiable, we can do another IBP and show that <span class="math display">\[
+\]</span> If <span class="math inline">\(f\)</span> indeed has a well-defined integrable first derivative, we can do the following estimate using that <span class="math inline">\(|e^{-ix\xi}| \leq 1\)</span> <span class="math display">\[
+|\widehat f(\xi)| = \left|\frac{1}{i\xi}\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x\right| = \frac{1}{|\xi|}\left|\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x\right| \leq \frac{1}{|\xi|}\left|\int_{-\infty}^\infty f'(x) \mathrm d x\right| \leq \frac{1}{|\xi|}\int_{-\infty}^\infty |f'(x)| \mathrm d x.
+\]</span> The integral here is simply some fixed constant dependent on your choice of <span class="math inline">\(f\)</span> and entirely independent of <span class="math inline">\(\xi\)</span>. So indeed as <span class="math inline">\(|\xi| \to \infty\)</span> the Fourier transform must vanish. The integral here is the <span class="math inline">\(L^1\)</span>-norm of <span class="math inline">\(f\)</span>. If we are fortunate enough that <span class="math inline">\(f\)</span> is <span class="math inline">\(C^2\)</span> or twice differentiable, we can do another IBP and show that <span class="math display">\[
 |\widehat f(\xi)| \leq \frac{\lVert f^{(2)}\rVert_{L^1(\mathbb R)}}{|\xi|^2}
 \]</span> and the decay is just a little bit stronger. The punchline here is that if <span class="math inline">\(f\)</span> happens to be smooth, or infinitely differentiable, then we can show that for any <span class="math inline">\(N\)</span> <span class="math display">\[
 |\widehat f(\xi)| \leq \frac{\lVert f^{(N)}\rVert_{L^1(\mathbb R)}}{|\xi|^N}.
@@ -262,6 +262,7 @@ v(x) = \begin{cases}
 
 <ol>
 <li id="fn1"><p>I have oft heard the argument that since it is easy to derive via other seemingly more “elementary” or “foundational” results, that IBP certainly shouldn’t be of much interest in and of itself. I find that this sort of thinking is antithetical to the pursuit of research in analysis. It is often the case that very simple methods are quite difficult to come by, and can go a very long way. It is with the presentation of IBP as a method in and of itself that we have made so much progress using it. To beat an analogy to death, I think this is because mathematics is very much an art form. You can claim that some methods are easy, but there is much credit to be given to those who tried to experiment with the simplest things.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>We can also consider <span class="math inline">\(\mathbb R^n\)</span> instead of <span class="math inline">\(\mathbb R\)</span>. In fact, it would not be difficult to write down some equivalent statement of integration by parts over an arbitrary manifold, but we will leave this discussion to <a href="https://arbourj.wordpress.com/2013/12/19/integration-by-parts-and-greens-formula-on-riemannian-manifolds/">this blog post</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
