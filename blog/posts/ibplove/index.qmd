@@ -6,6 +6,8 @@ draft: true
 
 Analysis is a vast field, and there is a great deal I can say about why I find it beautiful[^1]. However, a common adage conveys the beauty quite concisely: analysis is not about objects, it is about actions. The subjects of interest are not all-encompassing theorems about the macroscopic structure of the field, but rather the usage of ingenious tools to analyze a class of objects. I can find countless examples in harmonic, functional, stochastic, geometric, or microlocal analysis.
 
+[^1]: I owe a great deal of this understanding to [Pierre Portal](https://sites.google.com/view/pierre-portal/home), [Po Lam Yung](https://maths-people.anu.edu.au/~plyung/) and [Andrew Hassell](https://maths-people.anu.edu.au/~hassell/).
+
 Integration by parts is one such ingenious tool which most students will learn in high school, and yet it evades the interest of most undergraduate mathematics students. In this article I will hopefully convince you that it should be of great interest. I love it, and you should too. I break apart this discussion broadly into two focuses: practice and theory.
 
 ### Practice
@@ -16,8 +18,42 @@ $$
 \frac{\mathrm d^n f}{\mathrm d x^n} < \infty
 $$
 
-for all $n \in \mathbb N$ up to some sufficiently high amount of regularity. If $f$ is smooth, this is indeed all $n$. We will try to prove a version of the [Riemann–Lebesgue lL;Lemma](https://en.wikipedia.org/wiki/Riemann%E2%80%93Lebesgue_lemma) for this $f$.
+for all $n \in \mathbb N$ up to some sufficiently high amount of regularity. If $f$ is smooth, this is indeed all $n$. We will try to prove a version of the [Riemann–Lebesgue Lemma](https://en.wikipedia.org/wiki/Riemann%E2%80%93Lebesgue_lemma) for this $f$. We will prove that the Fourier transform vanishes at infinity. Consider the Fourier transform of $f$ using the convention provided in [Hintz's notes](https://link.springer.com/book/9783031907050). 
+$$
+\widehat f(\xi) = \int_{-\infty}^\infty e^{-ix\xi} f(x) \mathrm d x
+$$
+Note that
+$$
+\frac{\mathrm d}{\mathrm d x}(e^{-ix\xi}) = -i\xi e^{-ix\xi}.
+$$
+This self referential derivative is key. It will allow us to now use integration by parts on the Fourier transform.
+$$
+\widehat f(\xi) = \int_{-\infty}^\infty e^{-ix\xi} f(x) \mathrm d x = \left. \left(\frac{e^{-ix\xi}}{-i\xi} f(x)\right)\right|_{-\infty}^\infty-\int_{-\infty}^\infty \frac{e^{-ix\xi}}{-i\xi} f'(x) \mathrm d x
+$$
+By the fact that $f$ is compactly supported, we expect that the first term in the final expression should vanish. In particular
+$$
+\widehat f(\xi) = \frac{1}{i\xi}\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x.
+$$
+If $f$ is at least $C^1$ then we can use $|e^{-ix\xi}| \leq 1$ to get the simple estimate that
+$$
+|\widehat f(\xi)| \leq \frac{\lVert f'\rVert_{L^1(\mathbb R)}}{|\xi|}
+$$
+and indeed that as $|\xi| \to \infty$ the Fourier transform must vanish. If we are fortunate enough that $f$ is $C^2$ or twice differentiable, we can do another integration by parts and show that
+$$
+|\widehat f(\xi)| \leq \frac{\lVert f^{(2)}\rVert_{L^1(\mathbb R)}}{|\xi|^2}
+$$
+and the decay is just a little bit stronger. The punchline here is that if $f$ happens to be smooth, or infinitely differentiable, then we can show that for any $N$
+$$
+|\widehat f(\xi)| \leq \frac{\lVert f^{(N)}\rVert_{L^1(\mathbb R)}}{|\xi|^N}.
+$$
+Indeed, we can prove a version of the Riemann-Lebesgue Lemma with this method, but also prove that the Fourier transform of any smooth function which vanishes at $\pm\infty$ must be **rapidly decaying**. **What is really going on?** Effectively, the Fourier transform is the integral of a highly oscillatory function against a slowly oscillating, or non-oscillating function. Imagine you take the integral of $\sin (\omega x)$ for $\omega \in \mathbb R$ against some function which is very close to 1 on the unit interval, and smoothly decays to 0. For large enough $\omega$ to induce heavy oscillations in $\sin$ we should see that the positive area contributions and negative area contributions will mostly cancel with each other in a symmetric-ish way. With this picture in mind, the result is not surprising at all.
 
-[^1]: I owe a great deal of this understanding to [Pierre Portal](https://sites.google.com/view/pierre-portal/home), [Po Lam Yung](https://maths-people.anu.edu.au/~plyung/) and [Andrew Hassell](https://maths-people.anu.edu.au/~hassell/).
+**How does integration by parts fit in?** In some sense, integration by parts is providing you with a way to transfer regularity. As long as you have a sufficiently well behaved function, you can throw derivatives from your highly oscillatory term onto this well behaved function with little consequences. In the process you will recover decay factors which help you prove neat results. When I first saw this technique, I thought it was magic. I have now seen it being applied tens of times in assignments, lectures, and papers. It feels no less like magic.
 
+### Theory
 
+There are broadly two situations in which I have encountered integration by parts which pointed out to me that it is not just a tool, but a fundamental property of the universe in its own right. Of course, these are influenced by my mathematical education: studying PDE, and studying differential geometry. The differently experienced analyst might notice other neat results (or maybe an algebraist, I don't know).
+
+#### "Weak" Stuff
+
+#### All the Laws
