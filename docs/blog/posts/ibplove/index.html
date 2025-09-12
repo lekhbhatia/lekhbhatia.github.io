@@ -69,7 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta name="quarto:status" content="draft">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -107,7 +106,7 @@ window.Quarto = {
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -183,7 +182,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="statement">Statement</h3>
 <p>In high school we learn that for <span class="math inline">\(f,g\in C^1(\mathbb R)\)</span> <span class="math display">\[
 \int f'g \mathrm d x = fg - \int g'f \mathrm d x
-\]</span> which can be derived with nothing more than the product rule and an application of the fundamental theorem of calculus<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To be a little pedantic, neither of these integrals is necessarily well defined. For a proper treatment of integration by parts, we would have to further impose something like <span class="math inline">\(f,f'\in L^p(\mathbb R)\)</span> and <span class="math inline">\(g,g' \in L^q(\R)\)</span> such that <span class="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>. We can make some standard adjustments to consider <span class="math inline">\(\mathbb R^n\)</span> instead of <span class="math inline">\(\mathbb R\)</span>. In fact, it would not be difficult to write down some equivalent statement of integration by parts over an arbitrary manifold, but we will leave this discussion to <a href="https://arbourj.wordpress.com/2013/12/19/integration-by-parts-and-greens-formula-on-riemannian-manifolds/">this blog post</a>.</p>
+\]</span> which can be derived with nothing more than the product rule and an application of the fundamental theorem of calculus<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To be a little pedantic, neither of these integrals is necessarily well defined. For a proper treatment of integration by parts, we would have to further impose something like <span class="math inline">\(f,f'\in L^p(\mathbb R)\)</span> and <span class="math inline">\(g,g' \in L^q(\mathbb R)\)</span> such that <span class="math inline">\(\frac{1}{p} + \frac{1}{q} = 1\)</span>. We can make some standard adjustments to consider <span class="math inline">\(\mathbb R^n\)</span> instead of <span class="math inline">\(\mathbb R\)</span>. In fact, it would not be difficult to write down some equivalent statement of integration by parts over an arbitrary manifold, but we will leave this discussion to <a href="https://arbourj.wordpress.com/2013/12/19/integration-by-parts-and-greens-formula-on-riemannian-manifolds/">this blog post</a>.</p>
 </section>
 <section id="practice" class="level3">
 <h3 class="anchored" data-anchor-id="practice">Practice</h3>
@@ -191,7 +190,7 @@ window.Quarto = {
 <p><span class="math display">\[
 \frac{\mathrm d^n f}{\mathrm d x^n} &lt; \infty
 \]</span></p>
-<p>for all <span class="math inline">\(n \in \mathbb N\)</span> up to some sufficiently high amount of regularity. If <span class="math inline">\(f\)</span> is smooth, this is indeed all <span class="math inline">\(n\)</span>. We will try to prove a version of the <a href="https://en.wikipedia.org/wiki/Riemann%E2%80%93Lebesgue_lemma">Riemann–Lebesgue Lemma</a> for this <span class="math inline">\(f\)</span>. We will prove that the Fourier transform vanishes at infinity. Consider the Fourier transform of <span class="math inline">\(f\)</span> using the convention provided in <a href="https://link.springer.com/book/9783031907050">Hintz’s notes</a>. <span class="math display">\[
+<p>for all <span class="math inline">\(n \in \mathbb N\)</span> up to some sufficiently high amount of regularity. If <span class="math inline">\(f\)</span> is smooth, this is indeed all <span class="math inline">\(n\)</span>. We will try to prove a version of the <a href="https://en.wikipedia.org/wiki/Riemann%E2%80%93Lebesgue_lemma">Riemann–Lebesgue Lemma</a> for this <span class="math inline">\(f\)</span>; that the Fourier transform vanishes at infinity. Consider the Fourier transform of <span class="math inline">\(f\)</span> using the convention provided in <a href="https://link.springer.com/book/9783031907050">Hintz’s notes</a>. <span class="math display">\[
 \widehat f(\xi) = \int_{-\infty}^\infty e^{-ix\xi} f(x) \mathrm d x
 \]</span> Note that <span class="math display">\[
 \frac{\mathrm d}{\mathrm d x}(e^{-ix\xi}) = -i\xi e^{-ix\xi}.
@@ -212,7 +211,48 @@ window.Quarto = {
 <section id="theory" class="level3">
 <h3 class="anchored" data-anchor-id="theory">Theory</h3>
 <p>There are probably many aspects of mathematical theory building which I could argue arise from IBP. However, I would be lying if I did not admit that most of these are in fact simply some kind of <a href="https://ncatlab.org/nlab/show/derivation">Leibniz rule</a> (rare instance of reasonable nLab post). However, I do believe there is one theory building aspect where it is uniquely the “integrative” nature of IBP which helps us out.</p>
-<p>This is the notion of “weak”-ness in the world of PDE. Let us consider the function</p>
+<p>This is the notion of “weak”-ness in the world of PDE. Let us consider the function <span class="math display">\[
+f(x) = \begin{cases}
+0 &amp; x&lt; 0\\
+x &amp; x\geq 0
+\end{cases}.
+\]</span></p>
+<p>In a vague sense, this function is differentiable with derivative given by <span class="math display">\[
+v(x) = \begin{cases}
+0 &amp; x&lt;0\\
+1 &amp; x\geq 0
+\end{cases}
+\]</span></p>
+<p>with the obvious caveat of non-differentiability at just a single point. While this is an imprecise statement, we as humans understand what we mean by writing something like this down. We effectively want to ignore the behaviour which is only captured on irrelevant sets (sets of measure zero). Integration by parts provides the natural idea. If we suspend disbelief for one second and assume that <span class="math inline">\(f\in C^1(\mathbb R)\)</span>, then it must be by IBP that for any <span class="math inline">\(\phi\in C^\infty_c(\mathbb R)\)</span></p>
+<p><span class="math display">\[
+\int f \phi' = -\int f' \phi
+\]</span></p>
+<p>where <span class="math inline">\(f'\)</span> is what we mean by the usual derivative of <span class="math inline">\(f\)</span> which is entirely well defined. In our example, <span class="math inline">\(f'\)</span> simply does not exist, but we do have a function <span class="math inline">\(v\)</span> such that for all <span class="math inline">\(\phi\in C^\infty_c(\mathbb R)\)</span></p>
+<p><span class="math display">\[
+\int f \phi' = -\int v \phi.
+\]</span></p>
+<p>We say that if <span class="math inline">\(v\)</span> satisfies this property for some possibly very irregular <span class="math inline">\(f\)</span>, then it is the weak derivative of <span class="math inline">\(f\)</span>. We use integration by parts to create a natural notion of a weak derivative. Formally, we can view the weak derivative in a distributional sense. We define the functional <span class="math inline">\(v\)</span> as the map from <span class="math inline">\(C^\infty_c(\mathbb R) \to \R\)</span> which maps</p>
+<p><span class="math display">\[
+\phi \mapsto -\int f \phi'.
+\]</span></p>
+<p><span class="math inline">\(v\)</span> is the weak derivative of <span class="math inline">\(f\)</span> and it can act on smooth functions with this integration. The easiest example of this is the Dirac-Delta function. Let <span class="math inline">\(f\)</span> be the indicator function on the positive reals. We define the Dirac-Delta function <span class="math inline">\(\delta\)</span> to be its weak derivative. This is not a function in any traditional sense, but it has the expected behaviour via the integral:</p>
+<p><span class="math display">\[
+\phi \mapsto -\int_0^\infty \phi' = \left. (-\phi)\right|_0^\infty = \phi(0)
+\]</span></p>
+<p>where we have just used the fundamental theorem of calculus. We are somehow able to capture the behaviour of what it means for <span class="math inline">\(f\)</span> to jump up rapidly at the origin, in a completely formal setting. Of course, if the natural derivative of <span class="math inline">\(f\)</span> exists already, we know that <span class="math inline">\(v\)</span> will directly coincide with <span class="math inline">\(f'\)</span> as well.</p>
+<p><strong>What else can we do?</strong> We can also consider a notion of a weak solution to a PDE. I would say that a function <span class="math inline">\(f\in C^2(\mathbb R)\)</span> is a solution to Laplace’s equation if</p>
+<p><span class="math display">\[
+\frac{\mathrm d^2 f}{\mathrm d x^2} = 0.
+\]</span></p>
+<p>What if <span class="math inline">\(f\)</span> is not <span class="math inline">\(C^2\)</span>, but only <span class="math inline">\(C^1\)</span>? Then we can weaken our notion of a solution slightly. We say that <span class="math inline">\(f\)</span> is a weak solution to Laplace’s equation if for all <span class="math inline">\(\phi \in C^\infty_c(\mathbb R)\)</span></p>
+<p><span class="math display">\[
+\int \frac{\mathrm d f}{\mathrm d x} \phi' = 0
+\]</span></p>
+<p>which only requires first derivatives. Maybe we don’t even have that. We can do IBP once more and move the final derivative onto <span class="math inline">\(\phi\)</span> and say that a weak solution is one such that for all <span class="math inline">\(\phi \in C^\infty_c(\mathbb R)\)</span></p>
+<p><span class="math display">\[
+\int f \phi'' = 0.
+\]</span></p>
+<p>This means that for any given PDE problem, there are multiple notions of a weak solution, most of which are inspired from integration by parts. It is a vital skill in solving PDEs to select the appropriate level of “weakness” of your solutions. However, I can certainly leave the more nuanced discussion of these ideas to <a href="https://www.amazon.com.au/Partial-Differential-Equations-Lawrence-Evans/dp/0821849743">Evans</a> or <a href="https://link.springer.com/book/10.1007/978-1-4419-7055-8">Taylor</a>.</p>
 
 
 </section>
