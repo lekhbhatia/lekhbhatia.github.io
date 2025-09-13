@@ -45,7 +45,7 @@ $$
 $$
 If $f$ indeed has a well-defined integrable first derivative, we can do the following estimate using that $|e^{-ix\xi}| \leq 1$
 $$
-|\widehat f(\xi)| = \left|\frac{1}{i\xi}\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x\right| = \frac{1}{|\xi|}\left|\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x\right| \leq \frac{1}{|\xi|}\left|\int_{-\infty}^\infty f'(x) \mathrm d x\right| \leq \frac{1}{|\xi|}\int_{-\infty}^\infty |f'(x)| \mathrm d x.
+|\widehat f(\xi)| = \left|\frac{1}{i\xi}\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x\right| = \frac{1}{|\xi|}\left|\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x\right| \leq \frac{1}{|\xi|}\int_{-\infty}^\infty |e^{-ix\xi}f'(x)| \mathrm d x \leq \frac{1}{|\xi|}\int_{-\infty}^\infty |f'(x)| \mathrm d x.
 $$
 The integral here is simply some fixed constant dependent on your choice of $f$ and entirely independent of $\xi$. So indeed as $|\xi| \to \infty$ the Fourier transform must vanish. The integral here is the $L^1$-norm of $f$. If we are fortunate enough that $f$ is $C^2$ or twice differentiable, we can do another IBP and show that
 $$

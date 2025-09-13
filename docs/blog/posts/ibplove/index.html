@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-82198019701ed23689b94b19be53ea0d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -199,7 +199,7 @@ window.Quarto = {
 \]</span> By the fact that <span class="math inline">\(f\)</span> is compactly supported, we expect that the first term in the final expression should vanish. In particular <span class="math display">\[
 \widehat f(\xi) = \frac{1}{i\xi}\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x.
 \]</span> If <span class="math inline">\(f\)</span> indeed has a well-defined integrable first derivative, we can do the following estimate using that <span class="math inline">\(|e^{-ix\xi}| \leq 1\)</span> <span class="math display">\[
-|\widehat f(\xi)| = \left|\frac{1}{i\xi}\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x\right| = \frac{1}{|\xi|}\left|\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x\right| \leq \frac{1}{|\xi|}\left|\int_{-\infty}^\infty f'(x) \mathrm d x\right| \leq \frac{1}{|\xi|}\int_{-\infty}^\infty |f'(x)| \mathrm d x.
+|\widehat f(\xi)| = \left|\frac{1}{i\xi}\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x\right| = \frac{1}{|\xi|}\left|\int_{-\infty}^\infty e^{-ix\xi} f'(x) \mathrm d x\right| \leq \frac{1}{|\xi|}\int_{-\infty}^\infty |e^{-ix\xi}f'(x)| \mathrm d x \leq \frac{1}{|\xi|}\int_{-\infty}^\infty |f'(x)| \mathrm d x.
 \]</span> The integral here is simply some fixed constant dependent on your choice of <span class="math inline">\(f\)</span> and entirely independent of <span class="math inline">\(\xi\)</span>. So indeed as <span class="math inline">\(|\xi| \to \infty\)</span> the Fourier transform must vanish. The integral here is the <span class="math inline">\(L^1\)</span>-norm of <span class="math inline">\(f\)</span>. If we are fortunate enough that <span class="math inline">\(f\)</span> is <span class="math inline">\(C^2\)</span> or twice differentiable, we can do another IBP and show that <span class="math display">\[
 |\widehat f(\xi)| \leq \frac{\lVert f^{(2)}\rVert_{L^1(\mathbb R)}}{|\xi|^2}
 \]</span> and the decay is just a little bit stronger. The punchline here is that if <span class="math inline">\(f\)</span> happens to be smooth, or infinitely differentiable, then we can show that for any <span class="math inline">\(N\)</span> <span class="math display">\[
