@@ -1,6 +1,6 @@
 ---
 title: "Why I Love Integration by Parts"
-date: "10/05/2025"
+date: "9/15/2025"
 ---
 
 Analysis is a vast field, and there is a great deal I can say about why I find it beautiful. However, a common adage conveys the beauty quite concisely: analysis is not about objects, it is about actions. The subjects of interest are not all-encompassing theorems about the macroscopic structure of the field, but rather the usage of ingenious tools to analyze a class of objects. I can find countless examples in harmonic, functional, stochastic, geometric, or microlocal analysis.

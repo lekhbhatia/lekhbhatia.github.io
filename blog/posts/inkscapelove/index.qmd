@@ -20,7 +20,7 @@ As it turned out, the final answer to my problem was provided to me by a blog po
 Tutorials can be found thanks to Elisa de Castro Guerra and others at [this site](https://inkscape-manuals.readthedocs.io/en/latest/index.html). The skills are easy to pick up. Myself and other students in my honors cohort were able to create usable images pretty much as soon as we had the editor installed. Here are some images I drew up in less than 5 minutes each.
 
 ::: {.center}
-![](csf.webp){width="50%"} ![](reaperkills.webp){width="30%"} ![](reflectedexample.webp){width="80%"}
+![](defaultcsf.svg){width="50%"} ![](reaperkills.svg){width="30%"} ![](reflectedexample.svg){width="80%"}
 :::
 
 

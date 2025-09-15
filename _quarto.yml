@@ -9,12 +9,11 @@ website:
   navbar:
     left:
       - href: blog/index.qmd
-        text: Blog
+        text: Posts
 
 format:
   html:
     theme:
       - cosmo
       - brand
-    css: styles.css
-    toc: true
+    css: style.css
