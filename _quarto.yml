@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Thoughts From A Lake"
+  title: "Thoughts by the Lake"
   site-url: https://lekhbhatia.github.io/
   search: true
   navbar:
